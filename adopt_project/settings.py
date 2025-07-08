@@ -76,29 +76,26 @@ WSGI_APPLICATION = 'adopt_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'adopt_db',
-#         'USER': 'adopt_user',
-#         'PASSWORD': 'adopt_pass',
-#         'HOST': 'localhost',
-#         'PORT': '5432',  # atau port lain jika kamu ubah sebelumnya
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'adopt_db',
+        'USER': 'adopt_user',
+        'PASSWORD': 'adopt_pass',
+        'HOST': 'localhost',
+        'PORT': '5432',  # atau port lain jika kamu ubah sebelumnya
+    }
+}
 
 import dj_database_url
 import os
 
-DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600)
-}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = ['*']  # Atau domain Railway kamu
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
