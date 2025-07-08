@@ -96,6 +96,10 @@ ALLOWED_HOSTS = ['*']  # Atau domain Railway kamu
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://web-production-f6535.up.railway.app'
+]
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
