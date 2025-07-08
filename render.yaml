@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: adopt-api
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn adopt_project.wsgi"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: adopt_project.settings
+      - key: PYTHON_VERSION
+        value: 3.11
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: False
