@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -49,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'adopt_project.urls'
@@ -84,6 +86,15 @@ DATABASES = {
         'PORT': '5432',  # atau port lain jika kamu ubah sebelumnya
     }
 }
+
+import dj_database_url
+import os
+
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+
+ALLOWED_HOSTS = ['*']  # Atau domain Railway kamu
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 
 # Password validation
