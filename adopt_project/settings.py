@@ -90,7 +90,7 @@ DATABASES = {
 import dj_database_url
 import os
 
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 ALLOWED_HOSTS = ['*']  # Atau domain Railway kamu
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -143,3 +143,9 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'adoption.User'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}

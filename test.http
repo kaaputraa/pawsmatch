@@ -1,0 +1,37 @@
+### Login
+POST http://127.0.0.1:8000/api/login/
+Content-Type: application/json
+
+{
+  "username": "admin_shelter",
+  "password": "admin123"
+}
+
+### Lihat list hewan
+GET http://127.0.0.1:8000/api/animals/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUyMDMxMTkyLCJpYXQiOjE3NTIwMzA4OTIsImp0aSI6ImUzMGNkZDhkN2ZkOTQwNDY5ZGZhZWUwYzU1OTg0Mjc5IiwidXNlcl9pZCI6MX0.kmS3UgCA5fCqeGKb9ZWzyAyJZrxhtm72eObGHoq6eHo
+
+### Buat appointment adopsi
+POST http://127.0.0.1:8000/api/appointments/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUyMDMxMTkyLCJpYXQiOjE3NTIwMzA4OTIsImp0aSI6ImUzMGNkZDhkN2ZkOTQwNDY5ZGZhZWUwYzU1OTg0Mjc5IiwidXNlcl9pZCI6MX0.kmS3UgCA5fCqeGKb9ZWzyAyJZrxhtm72eObGHoq6eHo
+
+{
+  "animal": 4,
+  "appointment_date": "2025-07-10",
+  "notes": "Saya tertarik mengadopsi hewan ini."
+}
+
+
+### Lihat appointment saya
+GET http://127.0.0.1:8000/api/appointments/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUyMDMxMTkyLCJpYXQiOjE3NTIwMzA4OTIsImp0aSI6ImUzMGNkZDhkN2ZkOTQwNDY5ZGZhZWUwYzU1OTg0Mjc5IiwidXNlcl9pZCI6MX0.kmS3UgCA5fCqeGKb9ZWzyAyJZrxhtm72eObGHoq6eHo
+
+### Update status appointment (admin only)
+PATCH http://127.0.0.1:8000/api/appointments/1/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUyMDMxMTkyLCJpYXQiOjE3NTIwMzA4OTIsImp0aSI6ImUzMGNkZDhkN2ZkOTQwNDY5ZGZhZWUwYzU1OTg0Mjc5IiwidXNlcl9pZCI6MX0.kmS3UgCA5fCqeGKb9ZWzyAyJZrxhtm72eObGHoq6eHo
+
+{
+  "status": "approved"
+}
