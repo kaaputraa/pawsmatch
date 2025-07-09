@@ -90,7 +90,7 @@ DATABASES = {
 import dj_database_url
 import os
 
-# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 ALLOWED_HOSTS = ['*']  # Atau domain Railway kamu
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
