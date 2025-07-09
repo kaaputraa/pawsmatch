@@ -1,15 +1,15 @@
 ### Login
-POST http://127.0.0.1:8000/api/login/
+POST https://web-production-f6535.up.railway.app/api/login/
 Content-Type: application/json
 
 {
-  "username": "admin_shelter",
+  "username": "shelter_admin",
   "password": "admin123"
 }
 
 ### Lihat list hewan
-GET http://127.0.0.1:8000/api/animals/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUyMDMxMTkyLCJpYXQiOjE3NTIwMzA4OTIsImp0aSI6ImUzMGNkZDhkN2ZkOTQwNDY5ZGZhZWUwYzU1OTg0Mjc5IiwidXNlcl9pZCI6MX0.kmS3UgCA5fCqeGKb9ZWzyAyJZrxhtm72eObGHoq6eHo
+GET https://web-production-f6535.up.railway.app/api/animals
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUyMDMzMDI0LCJpYXQiOjE3NTIwMzI3MjQsImp0aSI6IjVhYmIyZDhkOTAzNTQxYjA5OTc1MmJlNzFmZDllZTY4IiwidXNlcl9pZCI6Mn0.RIc-2CvJdSPLBxqvuvveecFXQNuf1BzC_Mp-bwH-so8
 
 ### Buat appointment adopsi
 POST http://127.0.0.1:8000/api/appointments/
