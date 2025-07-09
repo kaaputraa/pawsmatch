@@ -9,7 +9,7 @@ Content-Type: application/json
 
 ### Lihat list hewan
 GET https://web-production-f6535.up.railway.app/api/animals
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUyMDMzMDI0LCJpYXQiOjE3NTIwMzI3MjQsImp0aSI6IjVhYmIyZDhkOTAzNTQxYjA5OTc1MmJlNzFmZDllZTY4IiwidXNlcl9pZCI6Mn0.RIc-2CvJdSPLBxqvuvveecFXQNuf1BzC_Mp-bwH-so8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUyMDM0MzY4LCJpYXQiOjE3NTIwMzQwNjgsImp0aSI6IjljOTNjYWYzNjczMTRjZTM5NGRmNTExNGIyZjlkNWQ0IiwidXNlcl9pZCI6Mn0.CFbjTzuPzMtzXeJFqyCwAYg7ZuMRJXeIhhmU8bLJYMo
 
 ### Buat appointment adopsi
 POST http://127.0.0.1:8000/api/appointments/
