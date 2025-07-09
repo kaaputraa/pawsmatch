@@ -1,5 +1,5 @@
 import psycopg2
-import json # json masih dibutuhkan jika Anda memiliki string JSON di tempat lain, tapi tidak untuk new_data/old_data
+import json
 import os
 import pandas as pd
 from sqlalchemy import create_engine, text
@@ -23,7 +23,8 @@ def save_last_processed_log_id_supabase(supabase_engine, log_id):
         "ON CONFLICT (consumer_name) DO UPDATE SET last_log_id = EXCLUDED.last_log_id, last_updated = EXCLUDED.last_updated"
     )
     with supabase_engine.connect() as conn:
-        conn.execute(query, {"log_id": log_id})
+        # PERBAIKAN: Konversi log_id ke int standar Python
+        conn.execute(query, {"log_id": int(log_id)}) 
         conn.commit()
 
 # --- Fungsi Utama Replikasi ---
@@ -57,21 +58,16 @@ def run_supabase_replication():
                     table_name = row['table_name']
                     op_type = row['operation_type']
                     record_id = row['record_id_pk']
-                    
-                    # PERBAIKAN: Hapus json.loads() di sini
                     new_data = row['new_data'] if pd.notna(row['new_data']) else None 
-                    # old_data = row['old_data'] if pd.notna(row['old_data']) else None
 
                     print(f"[{os.path.basename(__file__)}] Memproses {op_type} pada tabel '{table_name}' ID: {record_id}")
 
                     if op_type == 'I': # Insert
                         if new_data:
-                            # Gunakan dictionary langsung
                             pd.DataFrame([new_data]).to_sql(table_name, target_conn, if_exists='append', index=False)
                     elif op_type == 'U': # Update
                         if new_data:
                             target_conn.execute(text(f"DELETE FROM {table_name} WHERE id = :record_id"), {"record_id": record_id})
-                            # Gunakan dictionary langsung
                             pd.DataFrame([new_data]).to_sql(table_name, target_conn, if_exists='append', index=False)
                     elif op_type == 'D': # Delete
                         target_conn.execute(text(f"DELETE FROM {table_name} WHERE id = :record_id"), {"record_id": record_id})
